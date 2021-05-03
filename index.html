@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Presensi Pemateri</title>
+    <link rel="stylesheet" href="style.css" />
+    <script
+      src="https://kit.fontawesome.com/64d58efce2.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <div class="container">
+      <div class="form">
+        <div class="contact-info">
+          <h3 class="title">Sistem Digital PMR Wira SMK Negeri 1 Purwodadi</h3>
+          <p style="font-size: 12px;">Dibangun oleh Unit Umum Bidang Kreatifitas dan Teknologi Angkatan 20</p>
+          <div class="social-media">
+            <p>Sosial Media :</p>
+            <div class="social-icons">
+              <a href="#">
+                <i class="fab fa-facebook-f"></i>
+              </a>
+              <a href="#">
+                <i class="fab fa-youtube"></i>
+              </a>
+              <a href="#">
+                <i class="fab fa-instagram"></i>
+              </a>
+              <a href="#">
+                <i class="fab fa-blogger"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="contact-form">
+          <form name="sieOtan-presensi" action="index.html" autocomplete="off">
+            <h3 class="title">Presensi Pemateri</h3>
+            <p style="font-size: 12px;color:white;">* Lakukan Presensi Setelah Selesai Menyampaikan Materi/Setelah Ekstra Berakhir.</p>
+            <div class="input-container">
+              <input type="text" name="nama" class="input" />
+              <label for="">Nama Lengkap</label>
+              <span>Nama Lengkap</span>
+            </div>
+            <div class="input-container">
+              <input type="number" name="nis" class="input" />
+              <label for="">Nomor Induk Siswa</label>
+              <span>Nomor Induk Siswa</span>
+            </div>
+            <div class="input-container">
+              <select type="tel" name="kelas" class="input" >
+                <option style="color:black" value="volvo"></option>
+                <option style="color:black" value="XI">XI</option>
+                <option style="color:black" value="XII">XII</option>
+              </select>
+              <label for="">Kelas</label>
+              <span>Kelas</span>
+            </div>
+            <div class="input-container">
+              <select type="tel" name="jurusan" class="input" >
+                <option style="color:black" value="volvo"></option>
+                <option style="color:black" value="AKL 1">AKL 1</option>
+                <option style="color:black" value="AKL 2">AKL 2</option>
+                <option style="color:black" value="AKL 3">AKL 3</option>
+                <option style="color:black" value="OTKP 1">OTKP 1</option>
+                <option style="color:black" value="OTKP 2">OTKP 2</option>
+                <option style="color:black" value="OTKP 3">OTKP 3</option>
+                <option style="color:black" value="BDP 1">BDP 1</option>
+                <option style="color:black" value="BDP 2">BDP 2</option>
+                <option style="color:black" value="TKJ Reg">TKJ Reg</option>
+                <option style="color:black" value="TKJ Axioo">TKJ Axioo</option>
+                <option style="color:black" value="MM 1">MM 1</option>
+                <option style="color:black" value="MM 2">MM 2</option>
+                <option style="color:black" value="TB 1">TB 1</option>
+                <option style="color:black" value="TB 2">TB 2</option>
+                <option style="color:black" value="TBG 1">TBG 1</option>
+                <option style="color:black" value="TBG 2">TBG 2</option>
+              </select>
+              <label for="">Jurusan</label>
+              <span>Jurusan</span>
+            </div>
+            <div class="input-container">
+              <select type="tel" name="jabatan" class="input" >
+                <option style="color:black" value="volvo"></option>
+                <option style="color:black" value="AKL 1">Ketua</option>
+                <option style="color:black" value="AKL 2">Koordinator</option>
+                <option style="color:black" value="AKL 3">Sekretaris</option>
+                <option style="color:black" value="OTKP 1">Bendahara</option>
+                <option style="color:black" value="OTKP 2">Anggota Unit</option>
+              </select>
+              <label for="">Jabatan</label>
+              <span>Jabatan</span>
+            </div>
+            <div class="input-container">
+              <select type="tel" name="unit" class="input" >
+                <option style="color:black" value="volvo"></option>
+                <option style="color:black" value="AKL 1">Unit Umum</option>
+                <option style="color:black" value="AKL 2">Unit Kekeluargaan</option>
+                <option style="color:black" value="AKL 3">Unit Bakti Masyarakat</option>
+                <option style="color:black" value="OTKP 1">Unit K</option>
+              </select>
+              <label for="">Unit</label>
+              <span>Unit</span>
+            </div>
+            <div class="input-container textarea">
+              <textarea name="keterangan" class="input"></textarea>
+              <label for="">Bagaimana Ekstra Hari ini?</label>
+              <span>Bagaimana Ekstra Hari ini?</span>
+            </div>
+            <input id="btn_click" type="submit" value="Kirim" class="btn" />
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <script src="app.js"></script>
+
+    <script>
+      const scriptURL = 'https://script.google.com/macros/s/AKfycbyh90fnJPxVVLv1-JmguWE3-mF605tyyyx4zpplhzN8RSR6chZAW3ucZMLiijkvIRmAFA/exec'
+      const form = document.forms['sieOtan-presensi']
+    
+      form.addEventListener('submit', e => {
+        e.preventDefault()
+        fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+          .then(response => window.location = 'success.html')
+          .catch(error => console.error('Error!', error.message))
+      })
+      $('#btn_click').on('click', function() { window.location = 'success.html'; });
+    </script>
+  </body>
+</html>
